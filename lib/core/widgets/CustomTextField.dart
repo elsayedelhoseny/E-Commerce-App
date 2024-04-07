@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   CustomTextField(
       {super.key,
+      this.controller,
       this.prefixIcon,
       this.color,
       this.bordercolor,
@@ -23,6 +24,7 @@ class CustomTextField extends StatelessWidget {
   Color? backgroundcolor;
   Color? prefixIconColor;
   String? labelText;
+  TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,6 +33,7 @@ class CustomTextField extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundcolor, borderRadius: BorderRadius.circular(5)),
       child: TextFormField(
+        controller: controller,
         obscureText: obscureText!,
         validator: (data) {
           if (data!.isEmpty) {

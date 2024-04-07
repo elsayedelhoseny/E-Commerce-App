@@ -1,12 +1,12 @@
 class EndPoint {
   static String baseUrl = "https://student.valuxapps.com/api/";
   static String register = "register";
-  static String signUp = "user/signup";
+  static String login = "login";
 }
 
 class ApiKey {
   static String status = "status";
-  static String errorMessage = "ErrorMessage";
+  static String errorMessage = "message";
   static String email = "email";
   static String password = "password";
   static String token = "token";
