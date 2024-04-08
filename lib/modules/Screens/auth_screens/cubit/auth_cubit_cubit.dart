@@ -18,20 +18,16 @@ class AuthCubit extends Cubit<AuthStates> {
   TextEditingController signUpEmail = TextEditingController();
   TextEditingController signUpPassword = TextEditingController();
 
-  void register(
-      {required String email,
-      required String name,
-      required String phone,
-      required String password}) async {
+  void register() async {
     emit(RegisterLoadingState());
     try {
       Response response = await http.post(
         Uri.parse('https://student.valuxapps.com/api/register'),
         body: {
-          'name': name,
-          'email': email,
-          'password': password,
-          'phone': phone,
+          'name': signUpName.text,
+          'email': signUpEmail.text,
+          'password': signUpPassword.text,
+          'phone': signUpPhone.text,
           'image': "jdfjfj"
         },
       );
@@ -52,19 +48,20 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   // Account : mo.ha@gmail.com , password : 123456
-  void login({required String email, required String password}) async {
+  void login() async {
     emit(LoginLoadingState());
     try {
       Response response = await http.post(
         Uri.parse('https://student.valuxapps.com/api/login'),
-        body: {'email': email, 'password': password},
+        body: {'email': signInEmail.text, 'password': signInPassword.text},
       );
       if (response.statusCode == 200) {
         var responseData = jsonDecode(response.body);
         if (responseData['status'] == true) {
           await CacheNetwork.insertToCache(
               key: "token", value: responseData['data']['token']);
-          await CacheNetwork.insertToCache(key: "password", value: password);
+          await CacheNetwork.insertToCache(
+              key: "password", value: signInPassword.text);
           userToken = await CacheNetwork.getCacheData(key: "token");
           currentPassword = await CacheNetwork.getCacheData(key: "password");
           emit(LoginSuccessState());

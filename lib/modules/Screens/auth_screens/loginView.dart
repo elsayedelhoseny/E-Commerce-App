@@ -25,9 +25,10 @@ class LoginScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        final cubit = context.read<AuthCubit>();
         return SingleChildScrollView(
           child: Form(
-            key: context.read<AuthCubit>().signInFormKey,
+            key: cubit.signInFormKey,
             child: Column(
               children: [
                 const Padding(
@@ -45,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   labelText: 'Email',
-                  controller: context.read<AuthCubit>().signInEmail,
+                  controller: cubit.signInEmail,
                   hintText: 'Email *',
                   bordercolor: Colors.black,
                 ),
@@ -54,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   obscureText: true,
-                  controller: context.read<AuthCubit>().signInPassword,
+                  controller: cubit.signInPassword,
                   hintText: 'Password *',
                   labelText: 'Password',
                   bordercolor: Colors.black,
@@ -76,9 +77,7 @@ class LoginScreen extends StatelessWidget {
                     : CustomButon(
                         text: 'Login',
                         onTap: () {
-                          context
-                              .read<AuthCubit>()
-                              .login(email: '', password: '');
+                          cubit.login();
                         },
                         colortxt: Colors.white,
                         color: Colors.blue,
