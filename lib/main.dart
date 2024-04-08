@@ -1,14 +1,19 @@
-import 'package:dio/dio.dart';
-import 'package:first_app/auth/presentation/manger/cubit/auth_cubit.dart';
-import 'package:first_app/auth/presentation/views/defaultTabController.dart';
-import 'package:first_app/cache/cache_helper.dart';
-import 'package:first_app/core/api/dio_consumer.dart';
+import 'package:first_app/modules/Screens/auth_screens/cubit/auth_cubit_cubit.dart';
+import 'package:first_app/modules/Screens/auth_screens/defaultTabController.dart';
+import 'package:first_app/shared/bloc_observer/bloc_observer.dart';
+import 'package:first_app/shared/constants/constants.dart';
+import 'package:first_app/shared/network/local_network.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper().init();
+  Bloc.observer = MyBlocObserver();
+  await CacheNetwork.cacheInitialization();
+  userToken = await CacheNetwork.getCacheData(key: 'token');
+  currentPassword = await CacheNetwork.getCacheData(key: 'password');
+  debugPrint("User token is : $userToken");
+  debugPrint("Current Password is : $currentPassword");
   runApp(const MyApp());
 }
 
@@ -16,8 +21,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(DioConsumer(dio: Dio())),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthCubit()),
+      ],
       child: const MaterialApp(
           debugShowCheckedModeBanner: false, home: defaultTabController()),
     );
