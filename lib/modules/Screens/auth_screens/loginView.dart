@@ -2,6 +2,7 @@
 
 import 'package:first_app/modules/Screens/auth_screens/cubit/auth_cubit_cubit.dart';
 import 'package:first_app/modules/Screens/auth_screens/cubit/auth_cubit_state.dart';
+import 'package:first_app/modules/Screens/home/homeView.dart';
 import 'package:first_app/modules/Widgets/custom_button.dart';
 import 'package:first_app/modules/Widgets/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,14 @@ class LoginScreen extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Success')),
           );
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeView(),
+              ));
         } else if (state is FailedToLoginState) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('')),
+            SnackBar(content: Text(state.message)),
           );
         }
       },
