@@ -51,6 +51,10 @@ class RegisterScreen extends StatelessWidget {
                   height: 50,
                 ),
                 CustomTextField(
+                  prefixIcon: const Icon(
+                    Icons.account_circle,
+                    color: Colors.grey,
+                  ),
                   labelText: 'Name',
                   controller: cubit.signUpName,
                   hintText: 'Name *',
@@ -62,6 +66,7 @@ class RegisterScreen extends StatelessWidget {
                 IntlPhoneField(
                   controller: cubit.signUpPhone,
                   decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.phone),
                       labelText: 'Phone',
                       hintText: 'Phone *',
                       border: OutlineInputBorder(borderSide: BorderSide())),
@@ -69,6 +74,10 @@ class RegisterScreen extends StatelessWidget {
                   initialCountryCode: 'EG',
                 ),
                 CustomTextField(
+                  prefixIcon: const Icon(
+                    Icons.email,
+                    color: Colors.grey,
+                  ),
                   labelText: 'Email',
                   controller: cubit.signUpEmail,
                   hintText: 'Email *',
@@ -82,6 +91,11 @@ class RegisterScreen extends StatelessWidget {
                   labelText: 'Password',
                   controller: cubit.signUpPassword,
                   hintText: 'Password *',
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: Colors.grey,
+                  ),
+                  suffixIcon: const Icon(Icons.visibility),
                   bordercolor: Colors.black,
                 ),
                 const SizedBox(

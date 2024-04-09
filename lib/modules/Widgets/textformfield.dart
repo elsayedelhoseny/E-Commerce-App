@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   CustomTextField(
       {super.key,
+      this.suffixIcon,
+      this.labelStyle,
       this.controller,
       this.labelText,
       this.prefixIcon,
@@ -22,11 +24,13 @@ class CustomTextField extends StatelessWidget {
   Color? bordercolor;
   Color? backgroundcolor;
   String? labelText;
+  Widget? suffixIcon;
+  TextStyle? labelStyle;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 56,
-      width: 368,
+      width: double.infinity,
       decoration: BoxDecoration(
           color: backgroundcolor, borderRadius: BorderRadius.circular(5)),
       child: TextFormField(
@@ -41,9 +45,11 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
           prefixIconColor: Colors.black,
           hintText: hintText,
           labelText: labelText,
+          labelStyle: labelStyle,
           hintStyle: TextStyle(fontSize: 10, color: color),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(

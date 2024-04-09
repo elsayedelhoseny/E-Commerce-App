@@ -51,6 +51,10 @@ class LoginScreen extends StatelessWidget {
                   height: 60,
                 ),
                 CustomTextField(
+                  prefixIcon: const Icon(
+                    Icons.account_circle,
+                    color: Colors.grey,
+                  ),
                   labelText: 'Email',
                   controller: cubit.signInEmail,
                   hintText: 'Email *',
@@ -62,6 +66,11 @@ class LoginScreen extends StatelessWidget {
                 CustomTextField(
                   obscureText: true,
                   controller: cubit.signInPassword,
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: Colors.grey,
+                  ),
+                  suffixIcon: const Icon(Icons.visibility),
                   hintText: 'Password *',
                   labelText: 'Password',
                   bordercolor: Colors.black,
