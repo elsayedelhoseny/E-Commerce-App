@@ -4,8 +4,8 @@ import 'package:first_app/modules/Screens/home/bannars/cubit/bannars_state.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PCarouselSlider extends StatelessWidget {
-  const PCarouselSlider({super.key});
+class BCarouselSlider extends StatelessWidget {
+  const BCarouselSlider({super.key});
 
   @override
   Widget build(BuildContext context) {

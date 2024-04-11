@@ -1,5 +1,6 @@
 import 'package:first_app/modules/Screens/auth_screens/cubit/auth_cubit_cubit.dart';
 import 'package:first_app/modules/Screens/auth_screens/defaultTabController.dart';
+import 'package:first_app/modules/Screens/home/Products/cubit/product_cubit.dart';
 import 'package:first_app/modules/Screens/home/bannars/cubit/bannars_cubit.dart';
 import 'package:first_app/modules/Screens/home/homeView.dart';
 import 'package:first_app/shared/bloc_observer/bloc_observer.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => BannarsCubit()),
+        BlocProvider(create: (context) => ProductCubit()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
