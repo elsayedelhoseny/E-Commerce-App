@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:first_app/modules/Screens/cart/cubit/cart_cubit.dart';
 import 'package:first_app/modules/Screens/home/Products/cubit/product_cubit.dart';
 import 'package:first_app/modules/Screens/home/Products/cubit/product_state.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,20 @@ class ProductWidget extends StatelessWidget {
   final String productID;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProductCubit()..getProducts(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ProductCubit()..getProducts(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+      ],
       child: BlocConsumer<ProductCubit, ProductState>(
         listener: (context, state) {},
         builder: (context, state) {
           final cubit = context.read<ProductCubit>();
+          final ccubit = context.read<CartCubit>();
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
@@ -116,8 +125,13 @@ class ProductWidget extends StatelessWidget {
                             style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        const Color.fromARGB(255, 6, 38, 94))),
-                            onPressed: () {},
+                                        ccubit.cartID.contains(productID)
+                                            ? Colors.red
+                                            : const Color.fromARGB(
+                                                255, 6, 38, 94))),
+                            onPressed: () {
+                              ccubit.addOrRemoveFromCart(productID: productID);
+                            },
                             child: const Text(
                               'Buy Now',
                               style: TextStyle(color: Colors.white),

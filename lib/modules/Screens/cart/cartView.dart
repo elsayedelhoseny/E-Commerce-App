@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:first_app/modules/Screens/cart/widgets/CartViewBody.dart';
+import 'package:first_app/modules/Widgets/assets.dart';
 import 'package:flutter/material.dart';
 
 class CartView extends StatelessWidget {
@@ -8,8 +9,28 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CartViewBody(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 6, 38, 94),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              AssetData.logo,
+              height: 65,
+            ),
+            const Text(
+              'Azzrk',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: const Color.fromARGB(255, 228, 226, 226),
+      body: const CartViewBody(),
     );
   }
 }

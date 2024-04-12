@@ -25,9 +25,7 @@ class ProuctView2 extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProductCubit()..getProducts(),
       child: BlocConsumer<ProductCubit, ProductState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           final cubit = context.read<ProductCubit>();
           return Container(
