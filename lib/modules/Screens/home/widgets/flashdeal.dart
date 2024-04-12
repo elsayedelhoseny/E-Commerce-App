@@ -1,15 +1,15 @@
 import 'dart:async';
-import 'package:first_app/modules/Screens/home/widgets/salesView.dart';
+import 'package:first_app/modules/Screens/home/Products/CategoryView.dart';
 import 'package:flutter/material.dart';
 
-class FlashDealView extends StatefulWidget {
-  const FlashDealView({super.key});
+class CategoryView extends StatefulWidget {
+  const CategoryView({super.key});
 
   @override
-  State<FlashDealView> createState() => _FlashDealViewState();
+  State<CategoryView> createState() => _CategoryViewState();
 }
 
-class _FlashDealViewState extends State<FlashDealView> {
+class _CategoryViewState extends State<CategoryView> {
   late Timer _timer;
   Duration _duration =
       const Duration(hours: 84); // Starting countdown from 84 hours
@@ -57,7 +57,7 @@ class _FlashDealViewState extends State<FlashDealView> {
             const Padding(
               padding: EdgeInsets.only(top: 8.0, bottom: 8, left: 25),
               child: Text(
-                'FlashDeal',
+                'Category',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -86,10 +86,10 @@ class _FlashDealViewState extends State<FlashDealView> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SalesView(),
+                      builder: (context) => const CategoriesScreen(),
                     ));
               },
               child: const Icon(

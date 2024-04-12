@@ -21,6 +21,7 @@ class PCarouselSlider extends StatelessWidget {
             itemBuilder:
                 (BuildContext context, int itemIndex, int pageViewIndex) =>
                     ProductCard(
+              productID: cubit.products[itemIndex].id.toString(),
               imageUrl: cubit.products[itemIndex].image!,
               productName: cubit.products[itemIndex].name!,
               discountPrice: cubit.products[itemIndex].oldPrice!,

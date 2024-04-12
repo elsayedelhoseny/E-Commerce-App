@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:first_app/models/product_model.dart';
 import 'package:first_app/modules/Screens/home/Products/cubit/product_cubit.dart';
 import 'package:first_app/modules/Screens/home/Products/cubit/product_state.dart';
@@ -27,7 +29,8 @@ class GridViewProduct extends StatelessWidget {
                       childAspectRatio: .61,
                       crossAxisSpacing: 0),
                   itemBuilder: (context, index) {
-                    return _productItem(model: cubit.products[index]);
+                    return _productItem(
+                        model: cubit.products[index], cubit: cubit);
                   },
                 );
         },
@@ -36,7 +39,8 @@ class GridViewProduct extends StatelessWidget {
   }
 }
 
-Widget _productItem({required ProductModel model}) {
+Widget _productItem(
+    {required ProductModel model, required ProductCubit cubit}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4),
     child: Container(
@@ -49,11 +53,36 @@ Widget _productItem({required ProductModel model}) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Image.network(
-              model.image!,
-              fit: BoxFit.fill,
-              width: double.infinity,
-              height: double.infinity,
+            child: Stack(
+              children: [
+                Image.network(
+                  model.image!,
+                  fit: BoxFit.fill,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        cubit.addOrRemoveFromFavorites(
+                            productID: model.id.toString());
+                      },
+                      child: Icon(
+                        Icons.favorite,
+                        color: cubit.favoritesID.contains(model.id.toString())
+                            ? Colors.red
+                            : Colors.grey,
+                        size: 40,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(

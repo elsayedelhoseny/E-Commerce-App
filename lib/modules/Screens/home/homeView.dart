@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:first_app/modules/Screens/home/widgets/HomeViewBody.dart';
 import 'package:first_app/modules/Widgets/assets.dart';
 import 'package:flutter/material.dart';
