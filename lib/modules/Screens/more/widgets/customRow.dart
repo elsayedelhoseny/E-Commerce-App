@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:first_app/shared/style/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +21,12 @@ class CRow extends StatelessWidget {
               size: 30,
               color: mainColor,
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Text(
               txt,
-              style: TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 17),
             )
           ],
         ),

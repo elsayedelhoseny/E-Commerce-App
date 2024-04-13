@@ -64,6 +64,5 @@ class Help_SupportView extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
