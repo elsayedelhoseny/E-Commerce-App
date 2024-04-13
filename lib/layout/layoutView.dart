@@ -3,6 +3,7 @@
 import 'package:first_app/modules/Screens/cart/cartView.dart';
 import 'package:first_app/modules/Screens/fav/FavView.dart';
 import 'package:first_app/modules/Screens/home/homeView.dart';
+import 'package:first_app/modules/Screens/more/moreView.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -18,6 +19,7 @@ class BottomNavBar extends StatelessWidget {
         const HomeView(),
         const FavView(),
         const CartView(),
+        const MoreView(),
       ];
     }
 
@@ -38,6 +40,12 @@ class BottomNavBar extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.shopping_cart),
           title: ("Cart"),
+          activeColorPrimary: const Color.fromARGB(255, 6, 38, 94),
+          inactiveColorPrimary: Colors.grey,
+        ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.grid_view_outlined),
+          title: ("More"),
           activeColorPrimary: const Color.fromARGB(255, 6, 38, 94),
           inactiveColorPrimary: Colors.grey,
         ),
