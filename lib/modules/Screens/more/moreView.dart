@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:first_app/modules/Screens/more/widgets/moreViewBody.dart';
+import 'package:first_app/shared/style/colors.dart';
 import 'package:flutter/material.dart';
 
 class MoreView extends StatelessWidget {
@@ -9,7 +10,7 @@ class MoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 228, 226, 226),
+      backgroundColor: mainColor,
       body: MoreViewBody(),
     );
   }
