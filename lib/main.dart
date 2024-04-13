@@ -4,6 +4,7 @@ import 'package:first_app/modules/Screens/auth_screens/defaultTabController.dart
 import 'package:first_app/modules/Screens/cart/cubit/cart_cubit.dart';
 import 'package:first_app/modules/Screens/home/Products/cubit/product_cubit.dart';
 import 'package:first_app/modules/Screens/home/bannars/cubit/bannars_cubit.dart';
+import 'package:first_app/modules/Screens/more/cubit/profile_data_cubit.dart';
 import 'package:first_app/shared/bloc_observer/bloc_observer.dart';
 import 'package:first_app/shared/constants/constants.dart';
 import 'package:first_app/shared/network/local_network.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
               ..getCategoriesData()
               ..getFavorites()),
         BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => ProfileDataCubit()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

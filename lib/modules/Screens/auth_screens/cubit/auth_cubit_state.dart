@@ -21,3 +21,10 @@ class FailedToLoginState extends AuthStates {
   final String message;
   FailedToLoginState({required this.message});
 }
+
+class LogoutSuccessState extends AuthStates {}
+
+class FailedToLogoutState extends AuthStates {
+  final String message;
+  FailedToLogoutState({required this.message});
+}

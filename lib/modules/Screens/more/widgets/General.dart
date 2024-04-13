@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:first_app/modules/Screens/more/widgets/profileView.dart';
+
 import 'customRow.dart';
 import 'package:flutter/material.dart';
 
@@ -18,30 +20,37 @@ class General extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: const Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CRow(
+          const CRow(
             icon: Icons.location_city,
             txt: 'Track Order',
           ),
           CRow(
-            icon: Icons.add_location,
-            txt: 'Addresses',
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileScreen(),
+                  ));
+            },
+            icon: Icons.account_circle,
+            txt: 'Profile',
           ),
-          CRow(
+          const CRow(
             icon: Icons.list,
             txt: 'Coupons',
           ),
-          CRow(
+          const CRow(
             icon: Icons.category,
             txt: 'Category',
           ),
-          CRow(
+          const CRow(
             icon: Icons.notifications,
             txt: 'Notification',
           ),
-          CRow(
+          const CRow(
             icon: Icons.settings,
             txt: 'Settings',
           ),

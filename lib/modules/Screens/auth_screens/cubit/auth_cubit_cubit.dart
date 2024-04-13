@@ -80,4 +80,26 @@ class AuthCubit extends Cubit<AuthStates> {
     chosenValue = val;
     emit(ChangeValueSuccessState());
   }
+
+  // void logout() async {
+  //   var headers = {"lang": "en", "Authorization": userToken!};
+  //   var request = http.Request(
+  //       'POST', Uri.parse('https://student.valuxapps.com/api/logout'));
+  //   request.body = json.encode({"fcm_token": "SomeFcmToken"});
+  //   request.headers.addAll(headers);
+
+  //   try {
+  //     http.StreamedResponse response = await request.send();
+  //     if (response.statusCode == 200) {
+  //       print(await response.stream.bytesToString());
+  //       await CacheNetwork.clearData();
+  //       emit(LogoutSuccessState());
+  //     } else {
+  //       print(response.reasonPhrase);
+  //     }
+  //   } catch (e) {
+  //     emit(FailedToLogoutState(message: e.toString()));
+  //     // Handle any errors during logout
+  //   }
+  // }
 }
